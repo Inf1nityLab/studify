@@ -1,0 +1,377 @@
+
+
+
+// class ForgotPasswordPage extends StatefulWidget {
+//   const ForgotPasswordPage({super.key});
+//
+//   @override
+//   State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
+// }
+//
+// class _ForgotPasswordPageState extends State<ForgotPasswordPage>
+//     with TickerProviderStateMixin {
+//   final _formKey = GlobalKey<FormState>();
+//   final _emailController = TextEditingController();
+//   bool _isLoading = false;
+//   bool _isEmailSent = false;
+//
+//   late AnimationController _fadeController;
+//   late AnimationController _slideController;
+//   late Animation<double> _fadeAnimation;
+//   late Animation<Offset> _slideAnimation;
+//
+//   @override
+//   void initState() {
+//     super.initState();
+//
+//     _fadeController = AnimationController(
+//       duration: const Duration(milliseconds: 800),
+//       vsync: this,
+//     );
+//
+//     _slideController = AnimationController(
+//       duration: const Duration(milliseconds: 1000),
+//       vsync: this,
+//     );
+//
+//     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+//       CurvedAnimation(parent: _fadeController, curve: Curves.easeInOut),
+//     );
+//
+//     _slideAnimation = Tween<Offset>(
+//       begin: const Offset(0, 0.2),
+//       end: Offset.zero,
+//     ).animate(
+//       CurvedAnimation(parent: _slideController, curve: Curves.easeOutCubic),
+//     );
+//
+//     _fadeController.forward();
+//     _slideController.forward();
+//   }
+//
+//   @override
+//   void dispose() {
+//     _fadeController.dispose();
+//     _slideController.dispose();
+//     _emailController.dispose();
+//     super.dispose();
+//   }
+//
+//   void _handleResetPassword() {
+//     if (_formKey.currentState!.validate()) {
+//       setState(() {
+//         _isLoading = true;
+//       });
+//
+//       Future.delayed(const Duration(seconds: 2), () {
+//         setState(() {
+//           _isLoading = false;
+//           _isEmailSent = true;
+//         });
+//       });
+//     }
+//   }
+//
+//   // Элегантная левая панель для Studify
+//   Widget _buildLeftPanel() {
+//     final isDarkMode = ThemeManager.isDarkMode;
+//     return CommonWidgets.buildLeftPanel(
+//       context: context,
+//       isDarkMode: isDarkMode,
+//       title: 'Studify',
+//       subtitle: 'Восстановление доступа',
+//       logoIcon: Icons.lock_reset,
+//       floatingIcon1: Icons.security,
+//       floatingIcon2: Icons.speed,
+//       floatingIcon3: Icons.support_agent,
+//       ballIcon1: Icons.verified_user,
+//       ballIcon2: Icons.email,
+//       ballIcon3: Icons.check_circle,
+//       ballIcon4: Icons.help_outline,
+//     );
+//   }
+//
+//   // Правая панель с формой
+//   Widget _buildRightPanel() {
+//     final isDarkMode = ThemeManager.isDarkMode;
+//     return CommonWidgets.buildRightPanel(
+//       context: context,
+//       isDarkMode: isDarkMode,
+//       title: _isEmailSent ? 'Письмо отправлено!' : 'Забыли пароль?',
+//       subtitle:
+//       _isEmailSent
+//           ? 'Проверь свою почту! Мы отправили инструкции для восстановления пароля.'
+//           : 'Не волнуйся! Введи свой email и мы отправим инструкции для восстановления пароля.',
+//       buttonText: 'Отправить инструкции',
+//       isLoading: _isLoading,
+//       onButtonPressed: _isEmailSent ? null : _handleResetPassword,
+//       formContent:
+//       _isEmailSent
+//           ? _buildSuccessMessage()
+//           : Form(
+//         key: _formKey,
+//         child: Column(
+//           children: [
+//             // Email поле
+//             CommonWidgets.universalTextField(
+//               controller: _emailController,
+//               hintText: 'Email',
+//               icon: Icons.email_outlined,
+//               isDarkMode: isDarkMode,
+//               isDesktop: true,
+//               keyboardType: TextInputType.emailAddress,
+//               validator: (value) {
+//                 if (value == null || value.isEmpty) {
+//                   return 'Пожалуйста, введите email';
+//                 }
+//                 if (!RegExp(
+//                   r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+//                 ).hasMatch(value)) {
+//                   return 'Пожалуйста, введите корректный email';
+//                 }
+//                 return null;
+//               },
+//             ),
+//           ],
+//         ),
+//       ),
+//       bottomLink: CommonWidgets.bottomLinkRow(
+//         questionText: 'Вспомнили пароль? ',
+//         actionText: 'Войти',
+//         onTap: () {
+//           context.go('/sign-in');
+//         },
+//         isDarkMode: isDarkMode,
+//         isDesktop: true,
+//       ),
+//     );
+//   }
+//
+//   // Сообщение об успешной отправке для desktop
+//   Widget _buildSuccessMessage() {
+//     final isDarkMode = ThemeManager.isDarkMode;
+//     return Container(
+//       padding: const EdgeInsets.all(24),
+//       decoration: BoxDecoration(
+//         borderRadius: BorderRadius.circular(16),
+//         color: AppColorUtils.getCardColor(isDarkMode),
+//         border: Border.all(color: AppColorUtils.getBorderColor(isDarkMode)),
+//         boxShadow: AppShadows.getDesktopCardShadow(),
+//       ),
+//       child: Column(
+//         children: [
+//           Container(
+//             width: 60,
+//             height: 60,
+//             decoration: BoxDecoration(
+//               borderRadius: BorderRadius.circular(30),
+//               gradient: AppGradients.desktopGradient,
+//             ),
+//             child: const Icon(Icons.check, color: Colors.white, size: 30),
+//           ),
+//           const SizedBox(height: 16),
+//           Text(
+//             'Письмо отправлено!',
+//             style: TextStyle(
+//               fontSize: 18,
+//               fontWeight: FontWeight.w700,
+//               color: AppColorUtils.getTextColor(isDarkMode),
+//             ),
+//           ),
+//           const SizedBox(height: 8),
+//           Text(
+//             'Проверь папку "Входящие" или "Спам"',
+//             style: TextStyle(
+//               fontSize: 14,
+//               color: AppColorUtils.getHintColor(isDarkMode),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+//
+//   // Mobile layout
+//   Widget _buildMobileLayout() {
+//     final isDarkMode = ThemeManager.isDarkMode;
+//     return Scaffold(
+//       backgroundColor: AppColorUtils.getBackgroundColor(isDarkMode),
+//       body: SafeArea(
+//         child: FadeTransition(
+//           opacity: _fadeAnimation,
+//           child: SlideTransition(
+//             position: _slideAnimation,
+//             child: SingleChildScrollView(
+//               padding: const EdgeInsets.symmetric(horizontal: 24.0),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.stretch,
+//                 children: [
+//                   const SizedBox(height: 20),
+//
+//                   // Кнопка назад
+//                   Row(
+//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                     children: [
+//                       CommonWidgets.backButton(
+//                         isDarkMode: isDarkMode,
+//                         onTap: () => context.pop(),
+//                       ),
+//                     ],
+//                   ),
+//
+//                   const SizedBox(height: 40),
+//
+//                   // Логотип
+//                   Center(
+//                     child: CommonWidgets.buildAnimatedLogo(
+//                       icon: Icons.lock_reset,
+//                       isDarkMode: isDarkMode,
+//                       size: 90,
+//                       iconSize: 45,
+//                     ),
+//                   ),
+//
+//                   const SizedBox(height: 32),
+//
+//                   // Заголовок
+//                   CommonWidgets.buildAnimatedTitle(
+//                     title:
+//                     _isEmailSent ? 'Письмо отправлено!' : 'Забыли пароль?',
+//                     isDarkMode: isDarkMode,
+//                     fontSize: 32,
+//                   ),
+//
+//                   const SizedBox(height: 8),
+//
+//                   CommonWidgets.buildAnimatedSubtitle(
+//                     subtitle:
+//                     _isEmailSent
+//                         ? 'Проверь свою почту! Мы отправили инструкции для восстановления пароля.'
+//                         : 'Не волнуйся! Введи свой email и мы отправим инструкции для восстановления пароля.',
+//                     isDarkMode: isDarkMode,
+//                     fontSize: 16,
+//                   ),
+//
+//                   const SizedBox(height: 48),
+//
+//                   if (!_isEmailSent) ...[
+//                     // Форма восстановления
+//                     Form(
+//                       key: _formKey,
+//                       child: Column(
+//                         children: [
+//                           // Email поле
+//                           CommonWidgets.universalTextField(
+//                             controller: _emailController,
+//                             hintText: 'Email',
+//                             icon: Icons.email_outlined,
+//                             isDarkMode: isDarkMode,
+//                             isDesktop: false,
+//                             keyboardType: TextInputType.emailAddress,
+//                             validator: (value) {
+//                               if (value == null || value.isEmpty) {
+//                                 return 'Пожалуйста, введите email';
+//                               }
+//                               if (!RegExp(
+//                                 r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+//                               ).hasMatch(value)) {
+//                                 return 'Пожалуйста, введите корректный email';
+//                               }
+//                               return null;
+//                             },
+//                           ),
+//
+//                           const SizedBox(height: 36),
+//
+//                           // Кнопка отправки
+//                           CommonWidgets.actionButton(
+//                             onPressed: _isLoading ? null : _handleResetPassword,
+//                             isLoading: _isLoading,
+//                             text: 'Отправить инструкции',
+//                             height: 56,
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                   ] else ...[
+//                     // Сообщение об успешной отправке
+//                     Container(
+//                       padding: const EdgeInsets.all(24),
+//                       decoration: BoxDecoration(
+//                         borderRadius: BorderRadius.circular(16),
+//                         color: AppColorUtils.getCardColor(isDarkMode),
+//                         gradient: AppGradients.primaryGradientWithOpacity(0.1),
+//                         border: Border.all(
+//                           color: AppColors.primaryGradientStart.withOpacity(0.3),
+//                         ),
+//                       ),
+//                       child: Column(
+//                         children: [
+//                           Container(
+//                             width: 60,
+//                             height: 60,
+//                             decoration: BoxDecoration(
+//                               borderRadius: BorderRadius.circular(30),
+//                               gradient: AppGradients.primaryGradientTwo,
+//                             ),
+//                             child: const Icon(
+//                               Icons.check,
+//                               color: Colors.white,
+//                               size: 30,
+//                             ),
+//                           ),
+//                           const SizedBox(height: 16),
+//                           Text(
+//                             'Письмо отправлено!',
+//                             style: TextStyle(
+//                               fontSize: 20,
+//                               fontWeight: FontWeight.w700,
+//                               color: AppColorUtils.getTextColor(isDarkMode),
+//                             ),
+//                           ),
+//                           const SizedBox(height: 8),
+//                           Text(
+//                             'Проверь папку "Входящие" или "Спам"',
+//                             style: TextStyle(
+//                               fontSize: 16,
+//                               color: AppColorUtils.getHintColor(isDarkMode),
+//                             ),
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                   ],
+//
+//                   const SizedBox(height: 36),
+//
+//                   // Ссылка на вход
+//                   CommonWidgets.bottomLinkRow(
+//                     questionText: 'Вспомнили пароль? ',
+//                     actionText: 'Войти',
+//                     onTap: () => context.go('/sign-in'),
+//                     isDarkMode: isDarkMode,
+//                     isDesktop: false,
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     final isDesktop = AppResponsive.isDesktop(context);
+//
+//     if (isDesktop) {
+//       return Scaffold(
+//         backgroundColor: Colors.transparent,
+//         body: Row(children: [_buildLeftPanel(), _buildRightPanel()]),
+//       );
+//     } else {
+//       return _buildMobileLayout();
+//     }
+//   }
+// }
