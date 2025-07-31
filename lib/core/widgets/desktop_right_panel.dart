@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
-import '../../../../core/constants/app_colors.dart';
-import '../../../../core/widgets/universal_action_button.dart';
-import 'common_form_widgets.dart';
-
+import '../constants/app_colors.dart';
 
 class DesktopRightPanel extends StatelessWidget {
   final String title;
   final String subtitle;
   final Widget formContent;
-  final Widget bottomLink;
-  final VoidCallback? onButtonPressed;
-  final String buttonText;
-  final bool isLoading;
+  final Widget? bottomLink;
 
   const DesktopRightPanel({
     super.key,
     required this.title,
     required this.subtitle,
     required this.formContent,
-    required this.bottomLink,
-    required this.onButtonPressed,
-    required this.buttonText,
-    required this.isLoading,
+    this.bottomLink,
   });
 
   @override
@@ -100,20 +91,11 @@ class DesktopRightPanel extends StatelessWidget {
                         // Содержимое формы
                         formContent,
 
-                        const SizedBox(height: 16),
-
-                        // Кнопка действия
-                        UniversalActionButton(
-                          onPressed: onButtonPressed,
-                          isLoading: isLoading,
-                          text: buttonText,
-                          isDesktop: true,
-                        ),
-
-                        const SizedBox(height: 16),
-
-                        // Нижняя ссылка
-                        bottomLink,
+                        // Нижняя ссылка (опциональная)
+                        if (bottomLink != null) ...[
+                          const SizedBox(height: 16),
+                          bottomLink!,
+                        ],
                       ],
                     ),
                   ),

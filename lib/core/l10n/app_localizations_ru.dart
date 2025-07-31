@@ -146,4 +146,134 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get pageNotFound => 'Страница не найдена';
+
+  // Navigation Items
+  @override
+  String get schedule => 'Расписание';
+
+  @override
+  String get statistics => 'Статистика';
+
+  @override
+  String get createGroup => 'Создать группу';
+
+  @override
+  String get video => 'Видео';
+
+  @override
+  String get profile => 'Профиль';
+
+  @override
+  String get school => 'Школа';
+
+  @override
+  String get studio => 'Студия';
+
+  // Navigation UI
+  @override
+  String get backToSettings => 'Назад к настройкам';
+
+  @override
+  String get sidebarCollapse => 'Свернуть';
+
+  @override
+  String get sidebarExpand => 'Развернуть';
+
+  @override
+  String get logout => 'Выход';
+
+  @override
+  String get educationFuture => 'Образование будущего';
+
+  // School Creation
+  @override
+  String get createSchool => 'Создать школу';
+
+  @override
+  String get createSchoolSubtitle => 'Заполните информацию о вашей школе';
+
+  @override
+  String get schoolName => 'Название школы';
+
+  @override
+  String get schoolNameHint => 'Название школы';
+
+  @override
+  String get schoolNameRequired => 'Введите название школы';
+
+  @override
+  String get selectSubjects => 'Выберите предметы';
+
+  @override
+  String get selectDirections => 'Выберите направления';
+
+  @override
+  String get noSubjectsSelected => 'Не выбрано';
+
+  @override
+  String get noDirectionsSelected => 'Не выбрано';
+
+  @override
+  String get subjectsCount => 'предметов';
+
+  @override
+  String get directionsCount => 'направлений';
+
+  @override
+  String get learningType => 'Тип обучения';
+
+  @override
+  String get online => 'Онлайн';
+
+  @override
+  String get offline => 'Офлайн';
+
+  @override
+  String get schoolAddress => 'Адрес школы';
+
+  @override
+  String get schoolAddressHint => 'Адрес школы';
+
+  @override
+  String get schoolAddressRequired => 'Введите адрес школы';
+
+  @override
+  String get numberOfRooms => 'Количество кабинетов';
+
+  @override
+  String get numberOfRoomsHint => 'Количество кабинетов';
+
+  @override
+  String get numberOfRoomsRequired => 'Введите количество кабинетов';
+
+  @override
+  String get numberOfRoomsInvalid => 'Введите число';
+
+  @override
+  String get logo => 'Логотип';
+
+  @override
+  String get selectLogo => 'Выберите логотип';
+
+  @override
+  String get uploadImage => 'Загрузить изображение';
+
+  @override
+  String get cancel => 'Отмена';
+
+  @override
+  String get schoolCreatedSuccess => 'Школа успешно создана!';
+
+  @override
+  String get createSchoolButton => 'Создать школу';
+
+  // Dialog
+  @override
+  String get search => 'Поиск...';
+
+  @override
+  String get selected => 'Выбрано';
+
+  @override
+  String get done => 'Готово';
 } 

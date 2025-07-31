@@ -61,4 +61,54 @@ abstract class AppLocalizations {
   // Navigation
   String get backToHome;
   String get pageNotFound;
+  
+  // Navigation Items
+  String get schedule;
+  String get statistics;
+  String get createGroup;
+  String get video;
+  String get profile;
+  String get school;
+  String get studio;
+  
+  // Navigation UI
+  String get backToSettings;
+  String get sidebarCollapse;
+  String get sidebarExpand;
+  String get logout;
+  String get educationFuture;
+
+  // School Creation
+  String get createSchool;
+  String get createSchoolSubtitle;
+  String get schoolName;
+  String get schoolNameHint;
+  String get schoolNameRequired;
+  String get selectSubjects;
+  String get selectDirections;
+  String get noSubjectsSelected;
+  String get noDirectionsSelected;
+  String get subjectsCount;
+  String get directionsCount;
+  String get learningType;
+  String get online;
+  String get offline;
+  String get schoolAddress;
+  String get schoolAddressHint;
+  String get schoolAddressRequired;
+  String get numberOfRooms;
+  String get numberOfRoomsHint;
+  String get numberOfRoomsRequired;
+  String get numberOfRoomsInvalid;
+  String get logo;
+  String get selectLogo;
+  String get uploadImage;
+  String get cancel;
+  String get schoolCreatedSuccess;
+  String get createSchoolButton;
+
+  // Dialog
+  String get search;
+  String get selected;
+  String get done;
 } 

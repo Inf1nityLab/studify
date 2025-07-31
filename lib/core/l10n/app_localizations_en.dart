@@ -146,4 +146,134 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pageNotFound => 'Page Not Found';
+
+  // Navigation Items
+  @override
+  String get schedule => 'Schedule';
+
+  @override
+  String get statistics => 'Statistics';
+
+  @override
+  String get createGroup => 'Create Group';
+
+  @override
+  String get video => 'Video';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get school => 'School';
+
+  @override
+  String get studio => 'Studio';
+
+  // Navigation UI
+  @override
+  String get backToSettings => 'Back to Settings';
+
+  @override
+  String get sidebarCollapse => 'Collapse';
+
+  @override
+  String get sidebarExpand => 'Expand';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get educationFuture => 'The Future of Education';
+
+  // School Creation
+  @override
+  String get createSchool => 'Create School';
+
+  @override
+  String get createSchoolSubtitle => 'Fill in your school information';
+
+  @override
+  String get schoolName => 'School Name';
+
+  @override
+  String get schoolNameHint => 'School Name';
+
+  @override
+  String get schoolNameRequired => 'Please enter school name';
+
+  @override
+  String get selectSubjects => 'Select Subjects';
+
+  @override
+  String get selectDirections => 'Select Directions';
+
+  @override
+  String get noSubjectsSelected => 'None selected';
+
+  @override
+  String get noDirectionsSelected => 'None selected';
+
+  @override
+  String get subjectsCount => 'subjects';
+
+  @override
+  String get directionsCount => 'directions';
+
+  @override
+  String get learningType => 'Learning Type';
+
+  @override
+  String get online => 'Online';
+
+  @override
+  String get offline => 'Offline';
+
+  @override
+  String get schoolAddress => 'School Address';
+
+  @override
+  String get schoolAddressHint => 'School Address';
+
+  @override
+  String get schoolAddressRequired => 'Please enter school address';
+
+  @override
+  String get numberOfRooms => 'Number of Rooms';
+
+  @override
+  String get numberOfRoomsHint => 'Number of Rooms';
+
+  @override
+  String get numberOfRoomsRequired => 'Please enter number of rooms';
+
+  @override
+  String get numberOfRoomsInvalid => 'Please enter a number';
+
+  @override
+  String get logo => 'Logo';
+
+  @override
+  String get selectLogo => 'Select Logo';
+
+  @override
+  String get uploadImage => 'Upload Image';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get schoolCreatedSuccess => 'School created successfully!';
+
+  @override
+  String get createSchoolButton => 'Create School';
+
+  // Dialog
+  @override
+  String get search => 'Search...';
+
+  @override
+  String get selected => 'Selected';
+
+  @override
+  String get done => 'Done';
 } 

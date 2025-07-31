@@ -4,6 +4,11 @@ import '../../feature/auth/presentation/screens/sign_in_screen.dart';
 import '../../feature/auth/presentation/screens/sign_up_screen.dart';
 import '../../feature/auth/presentation/screens/forgot_password_screen.dart';
 import '../../feature/settings/presentation/screens/settings_screen.dart';
+import '../../feature/school/presentation/screens/create_school_screen.dart';
+import '../../feature/school/presentation/screens/select_school_group_screen.dart';
+import '../../feature/navigation/presentation/screens/navigation_screen.dart';
+import '../../feature/navigation/presentation/screens/user_type_selection_screen.dart';
+
 
 final GoRouter router = GoRouter(
   initialLocation: '/settings',
@@ -13,6 +18,17 @@ final GoRouter router = GoRouter(
       name: 'settings',
       builder: (context, state) => const SettingsScreen(),
     ),
+    GoRoute(
+      path: '/user-type-selection',
+      name: 'user-type-selection',
+      builder: (context, state) => const UserTypeSelectionScreen(),
+    ),
+    GoRoute(
+      path: '/navigation',
+      name: 'navigation',
+      builder: (context, state) => const NavigationScreen(),
+    ),
+
     GoRoute(
       path: '/sign-in',
       name: 'sign-in',
@@ -27,6 +43,16 @@ final GoRouter router = GoRouter(
       path: '/forgot-password',
       name: 'forgot-password',
       builder: (context, state) => const ForgotPasswordScreen(),
+    ),
+    GoRoute(
+      path: '/create-school',
+      name: 'create-school',
+      builder: (context, state) => const CreateSchoolScreen(),
+    ),
+    GoRoute(
+      path: '/select-school-group',
+      name: 'select-school-group',
+      builder: (context, state) => const SelectSchoolGroupScreen(),
     ),
   ],
   errorBuilder: (context, state) => Scaffold(

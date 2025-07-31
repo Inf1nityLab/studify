@@ -7,10 +7,13 @@ import 'package:device_preview/device_preview.dart';
 import 'core/constants/app_constants.dart';
 import 'core/providers/theme_provider.dart';
 import 'core/providers/locale_provider.dart';
+import 'feature/navigation/presentation/providers/navigation_provider.dart';
 import 'core/themes/app_theme.dart';
 import 'core/router/app_router.dart';
 import 'core/l10n/app_localizations_delegate.dart';
+import 'feature/navigation/presentation/screens/navigation_screen.dart';
 import 'feature/school/presentation/screens/create_school_screen.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,15 +32,15 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
         ChangeNotifierProvider(create: (context) => LocaleProvider()),
+        ChangeNotifierProvider(create: (context) => NavigationProvider()),
       ],
-      child: Consumer2<ThemeProvider, LocaleProvider>(
-        builder: (context, themeProvider, localeProvider, child) {
+              child: Consumer3<ThemeProvider, LocaleProvider, NavigationProvider>(
+          builder: (context, themeProvider, localeProvider, navigationProvider, child) {
           return MaterialApp(
             title: AppConstants.appName,
             debugShowCheckedModeBanner: false,
             useInheritedMediaQuery: true,
             locale: localeProvider.locale,
-            builder: DevicePreview.appBuilder,
             themeMode: themeProvider.themeMode,
             theme: AppTheme.getLightTheme(),
             darkTheme: AppTheme.getDarkTheme(),
@@ -48,8 +51,8 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: const [Locale('ru'), Locale('en')],
-            home: CreateSchoolScreen(),
             // routerConfig: router,
+            home: NavigationScreen(),
           );
         },
       ),
